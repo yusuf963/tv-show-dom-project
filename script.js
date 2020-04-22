@@ -6,7 +6,17 @@ function setup() {
 
 function makePageForEpisodes(episodeList) {
   const rootElem = document.getElementById("root");
-  rootElem.textContent = `Got ${episodeList.length} episode(s)`;
+  rootElem.textContent = `Got ${episodeList.name} episode(s)`;
+  console.log(episodeList)
 }
 
 window.onload = setup;
+
+
+
+function adding (){
+  a = 1;
+  b = 3;
+  return a + b
+}
+console.log(adding())
