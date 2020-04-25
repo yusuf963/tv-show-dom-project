@@ -6,11 +6,11 @@ function setup() {
 
 function makeSingleTVShowListing(episode) {
   const episodeDiv =  document.createElement("div")
-  let ban = document.createElement("h2")
-  ban.innerText = ` ${episode.name} - S${addingZero(episode.season)}E${addingZero(episode.number)}`;
+  let banner = document.createElement("h2")
+  banner.innerText = ` ${episode.name} - S${addingZero(episode.season)}E${addingZero(episode.number)}`;
   let image = document.createElement("IMG")
    episodeDiv.className = "episode"
-   episodeDiv.appendChild(ban)
+   episodeDiv.appendChild(banner)
   image.src = episode.image.medium
   episodeDiv.appendChild(image)
   let plot = document.createElement("div")
@@ -27,27 +27,34 @@ function makeSingleTVShowListing(episode) {
    }
  }
 
-
-
 function makePageForEpisodes(episodeList) {
   const rootElem = document.getElementById("root");
-
-
-  // create episode div
-  //let episodeDiv = makeSingleTVShowListing(episodeList[2]);
- 
- // add episode div to root elem
-  //rootElem.appendChild(episodeDiv)
- 
+  
   episodeList.forEach(episode => {
     let episodeDiv = makeSingleTVShowListing(episode);
     rootElem.appendChild(episodeDiv)
     
   });
 
-
-  
   console.log(episodeList)
 }
 
 window.onload = setup;
+ 
+
+// adding a search engine
+
+let searchBar = document.getElementById("filter")
+searchBar.addEventListener("keyup", filterNames);
+
+function filterNames(){
+  let filterValue = document.getElementById("searchBar").value.toUpperCase();
+  console.log(filterValue) 
+
+
+  let searchEpisode = document.getElementById("root")
+
+  let mm = searchEpisode.querySelectorAll("mm.collection-item")
+
+
+}
