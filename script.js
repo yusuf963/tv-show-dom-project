@@ -1,6 +1,7 @@
 //You can edit ALL of the code here
+const allEpisodes = getAllEpisodes();
+
 function setup() {
-  const allEpisodes = getAllEpisodes();
   makePageForEpisodes(allEpisodes);
 }
 
@@ -16,7 +17,7 @@ function makeSingleTVShowListing(episode) {
   let plot = document.createElement("div")
   plot.innerHTML = episode.summary
   episodeDiv.appendChild(plot)
-  return episodeDiv
+  return episodeDiv;
 }
 
  function addingZero (num){
@@ -29,10 +30,11 @@ function makeSingleTVShowListing(episode) {
 
 function makePageForEpisodes(episodeList) {
   const rootElem = document.getElementById("root");
+  rootElem.innerHTML = '';
   
   episodeList.forEach(episode => {
     let episodeDiv = makeSingleTVShowListing(episode);
-    rootElem.appendChild(episodeDiv)
+    rootElem.appendChild(episodeDiv);
     
   });
 
@@ -47,14 +49,15 @@ window.onload = setup;
 let searchBar = document.getElementById("filter")
 searchBar.addEventListener("keyup", filterNames);
 
-function filterNames(){
-  let filterValue = document.getElementById("searchBar").value.toUpperCase();
-  console.log(filterValue) 
+function filterNames(event){
+  const { value } = event.target;
 
+  const filteredEpisodes = allEpisodes.filter(
+    (episode) => {
+      const re = new RegExp(value, 'gi');
+      return episode.name.match(re);
+    }
+  );
 
-  let searchEpisode = document.getElementById("root")
-
-  let mm = searchEpisode.querySelectorAll("mm.collection-item")
-
-
+  makePageForEpisodes(filteredEpisodes);
 }
