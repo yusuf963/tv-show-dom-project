@@ -7,7 +7,7 @@ let  filteredEpisode ;
  let selectionShowsBar = document.getElementById("selection-shows-bar")
 //const allEpisodes = getAllEpisodes();
 let allEpisodes 
-fetch(`https://api.tvmaze.com/shows/4/episodes`)
+fetch(`https://api.tvmaze.com/shows/20/episodes`)
 .then(Response => Response.json())
 .then(data =>{
     allEpisodes = data
